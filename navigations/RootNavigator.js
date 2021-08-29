@@ -5,6 +5,8 @@ import Screen2 from './../Screens/Screen2';
 
 const Stack = createStackNavigator();
 
+// ************ Create Stack Navigator *********************
+
 export default function RootNavigator() {
   return (
     <Stack.Navigator initialRouteName="Screen1">

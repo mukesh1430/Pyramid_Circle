@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Slider from '@react-native-community/slider';
 
+//****************** Slider Component  */
+
 const SliderComponent = props => {
   return (
     <View style={{justifyContent: 'center'}}>
