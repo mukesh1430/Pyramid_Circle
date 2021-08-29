@@ -10,8 +10,10 @@ import {
   Alert,
 } from 'react-native';
 
-import ProgressCircle from 'react-native-progress-circle';
-import Slider from '@react-native-community/slider';
+import Circular from './../components/Circular';
+import SliderComponent from './../components/SliderComponent';
+
+import Colors from './../utils/colors';
 
 class Screen1 extends Component {
   constructor(props) {
@@ -22,57 +24,42 @@ class Screen1 extends Component {
   }
   componentDidMount = async () => {};
 
+  onSliderValueChanged = value => {
+    this.setState({sliderValue: value});
+  };
+  handleSignUpPress = () => {};
+
   render() {
     return (
       <View style={styles.container}>
-        <View
-          style={{
-            width: 220,
-            height: 220,
-            backgroundColor: '#3a6272ff',
-            borderRadius: 110,
-            justifyContent: 'center',
-            borderStyle: 'dashed',
-            borderWidth: 3,
-            borderColor: '#678',
-            alignItems: 'center',
-          }}>
-          <ProgressCircle
-            style={{alignContent: 'center'}}
-            percent={this.state.sliderValue * 10}
-            radius={80}
-            borderWidth={4}
-            color="#fff"
-            shadowColor="#89A1AC"
-            bgColor="#89A1AC">
-            <View
-              style={{
-                width: 110,
-                height: 110,
-                backgroundColor: '#fff',
-                borderRadius: 55,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <Text style={{fontSize: 18}}>
-                {'' + this.state.sliderValue * 10 + '%'}
-              </Text>
-            </View>
-          </ProgressCircle>
+        <View style={styles.lineContainer}>
+          <View style={[styles.lineStyle, {backgroundColor: '#fff'}]}></View>
+          <View style={styles.lineStyle}></View>
+          <View style={styles.lineStyle}></View>
+          <View style={styles.lineStyle}></View>
+          <View style={styles.lineStyle}></View>
         </View>
 
-        <Slider
-          style={{width: 200, height: 40, marginTop: 20}}
-          minimumValue={0}
-          maximumValue={10}
-          step={1}
-          onValueChange={value => {
-            this.setState({sliderValue: value});
-          }}
-          thumbTintColor="#6EDBE6"
-          minimumTrackTintColor="#6EDBE6"
-          maximumTrackTintColor="#fff"
-        />
+        <Text style={styles.textTitle}>
+          {'Rescue Session : Anger & Frustation'}
+        </Text>
+
+        <Text style={styles.textDesc}>
+          {'Pick the label of anger & Frustation right now'}
+        </Text>
+
+        <View style={{justifyContent: 'center', flex: 1, marginBottom: 20}}>
+          <Circular value={this.state.sliderValue} />
+          <SliderComponent onChanged={this.onSliderValueChanged.bind(this)} />
+        </View>
+
+        <View style={{width: '100%'}}>
+          <TouchableOpacity
+            style={[styles.buttonView]}
+            onPress={() => this.handleSignUpPress()}>
+            <Text style={[{color: '#000'}]}>Next</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -80,10 +67,46 @@ class Screen1 extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Colors.backgroundColor,
+    alignItems: 'center',
+  },
+  lineContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 80,
+    width: '100%',
+  },
 
-    backgroundColor: '#3a6272ff',
+  textTitle: {
+    color: '#fff',
+    fontSize: 18,
+    width: '100%',
+    padding: 20,
+    textAlign: 'left',
+  },
+  textDesc: {
+    color: '#fff',
+    fontSize: 20,
+    width: '100%',
+    fontWeight: '700',
+    paddingHorizontal: 20,
+    textAlign: 'left',
+  },
+
+  lineStyle: {
+    backgroundColor: Colors.gray,
+    height: 4,
+    width: 40,
+    borderRadius: 4,
+  },
+  buttonView: {
+    height: 40,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 20,
+    backgroundColor: '#fff',
+    margin: 40,
   },
 });
 
