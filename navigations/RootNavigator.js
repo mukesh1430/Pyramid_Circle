@@ -1,6 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Screen1 from './../Screens/Screen1';
+import Screen2 from './../Screens/Screen2';
 
 const Stack = createStackNavigator();
 
@@ -12,16 +13,11 @@ export default function RootNavigator() {
         component={Screen1}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
-        name="AuthNav"
-        component={AuthNavigator}
+      <Stack.Screen
+        name="Screen2"
+        component={Screen2}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="AppNav"
-        component={MyDrawer}
-        options={{headerShown: false}}
-      /> */}
     </Stack.Navigator>
   );
 }

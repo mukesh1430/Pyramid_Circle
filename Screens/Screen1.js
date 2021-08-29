@@ -27,7 +27,9 @@ class Screen1 extends Component {
   onSliderValueChanged = value => {
     this.setState({sliderValue: value});
   };
-  handleSignUpPress = () => {};
+  handleNextPress = () => {
+    this.props.navigation.navigate('Screen2');
+  };
 
   render() {
     return (
@@ -41,11 +43,11 @@ class Screen1 extends Component {
         </View>
 
         <Text style={styles.textTitle}>
-          {'Rescue Session : Anger & Frustation'}
+          {'RESCUE SESSION : ANGER & FRUSTATION'}
         </Text>
 
         <Text style={styles.textDesc}>
-          {'Pick the label of anger & Frustation right now'}
+          {'Pick the level of your anger & Frustation right now'}
         </Text>
 
         <View style={{justifyContent: 'center', flex: 1, marginBottom: 20}}>
@@ -56,7 +58,7 @@ class Screen1 extends Component {
         <View style={{width: '100%'}}>
           <TouchableOpacity
             style={[styles.buttonView]}
-            onPress={() => this.handleSignUpPress()}>
+            onPress={() => this.handleNextPress()}>
             <Text style={[{color: '#000'}]}>Next</Text>
           </TouchableOpacity>
         </View>
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
 
   textTitle: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 14,
     width: '100%',
     padding: 20,
     textAlign: 'left',
